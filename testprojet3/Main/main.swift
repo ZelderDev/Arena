@@ -14,21 +14,19 @@ var show = Display(team1: team1, team2: team2)
 var battle = Combat(team1: team1, team2: team2)
 
 
-team1.addCharacter(character: Dwarf(name: "Vrarox"))
-team1.addCharacter(character: Priest(name: "Broudy"))
-team1.addCharacter(character: Dwarf(name: "Prova"))
+//team1.addCharacter(character: Dwarf(name: "Vrarox"))
+//team1.addCharacter(character: Priest(name: "Broudy"))
+//team1.addCharacter(character: Dwarf(name: "Prova"))
+//team2.addCharacter(character: Dwarf(name: "Yhlia"))
+//team2.addCharacter(character: Priest(name: "Kervam"))
+//team2.addCharacter(character: Colossus(name: "Wallfax"))
 
-team2.addCharacter(character: Dwarf(name: "Yhlia"))
-team2.addCharacter(character: Priest(name: "Kervam"))
-team2.addCharacter(character: Colossus(name: "Wallfax"))
+//team2.getCharacter(index: 0).setHealthPoints(hp: 0)
+//team2.getCharacter(index: 1).setHealthPoints(hp: 0)
+//team2.getCharacter(index: 2).setHealthPoints(hp: 0)
 
-team2.getCharacter(index: 0).setHealthPoints(hp: 0)
-team2.getCharacter(index: 1).setHealthPoints(hp: 0)
-team2.getCharacter(index: 2).setHealthPoints(hp: 0)
-
-//show.askPlayerName()
-//show.choice()
-
-//show.pickPhase(team1: team1, team2: team2)
+show.askPlayerName()
+show.choice()
+show.pickPhase(team1: team1, team2: team2)
 battle.round()
 

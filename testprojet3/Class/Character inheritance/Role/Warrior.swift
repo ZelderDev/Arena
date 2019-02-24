@@ -10,6 +10,7 @@ import Foundation
 
 class Warrior: DamageDealer{
     
+    
     override init(name: String){
         super.init(name: name)
         //self.characterName = name
@@ -21,14 +22,6 @@ class Warrior: DamageDealer{
 
     }
     
-    override func setHealthPoints(hp: Int) {
-        self.healthPoints = hp
-        if(healthPoints > rawHp){
-            self.healthPoints = rawHp
-        }else if(healthPoints <= 0){
-            self.healthPoints = 0
-            isAlive = false
-        }
-    }
+
 }
 

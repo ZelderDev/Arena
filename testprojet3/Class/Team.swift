@@ -11,18 +11,48 @@ import Foundation
 class Team{
     var playerName: String = "Unnamed"
     var arrayCharac: [Character] = []
+    static var checkNamePlayer:[String] = ["Nono","Robert"]
+
     
     init(name: String){
         self.playerName = name
     }
     
     /* PLAYER NAME */
-    func setPayerName(){
-        print("\(playerName) entrez votre nom:")
-        let input = readLine()
-        if let input = input{
-            self.playerName  = input
+    func setPlayerName(){
+        var name: String = ""
+        var nameIsVailable: Bool = false
+
+        repeat{
+            print("\(playerName) entrez votre nom:")
+            let input = readLine()
+            if let input = input{
+                name = input
+            }
+            if(name == ""){
+                print("Erreur")
+            }else{
+                nameIsVailable = checkNamePlayer(name: name)
+            }
+        }while((name == "") || (nameIsVailable == false))
+        
+        self.playerName = name
+    }
+
+    func checkNamePlayer(name: String) -> Bool{
+        var vailable: Bool = true
+        
+        for index in Team.checkNamePlayer{              //check tout le tableau à la recherche de doublon
+            if(index == name){                          //si doublon alors redemande un autre nom
+                print("Le nom \(name) est déjà pris")   
+                vailable = false
+                return vailable
+            }else{
+                vailable = true                         //le nom est disponible
+            }
         }
+        Team.checkNamePlayer.append(name)       //ajout le nouveau à la bdd de noms
+        return vailable
     }
     
     func getPlayerName() -> String{
@@ -45,6 +75,10 @@ class Team{
     
     func getCharacterName(index: Int) -> String{
         return arrayCharac[index].getCharacterName()
+    }
+    
+    func getspecializationName(index: Int) -> String{
+        return arrayCharac[index].getSpecializationName()
     }
     
     func teamIsAlive() -> Bool{

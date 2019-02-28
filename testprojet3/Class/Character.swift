@@ -16,7 +16,7 @@ class Character{
     var damage: Int = 0
     var rawHp = 1
     var rawDamage = 0
-
+    var item: [String:Int] = [:]
     
     init(name: String){
         self.characterName = name

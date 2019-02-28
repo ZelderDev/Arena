@@ -25,19 +25,8 @@ class Display{
     
     //Demande le nom des joueurs
     func askPlayerName(){
-        team1.setPayerName()
-        team2.setPayerName()
-    }
-    
-    //propose une liste de héros
-    func choice(){
-        print("* * * * * * PHASE DE PICK * * * * * * *")
-        print("*          Liste des héros            *")
-        print("* 1.Combattant | hp: 100 | Dégâts: 10 *")
-        print("* 2.Mage       | hp: 80  | Soins:  10 *")
-        print("* 3.Colosse    | hp: 200 | Dégâts: 5  *")
-        print("* 4.Nain       | hp: 50  | Dégâts: 20 *")
-        print("* * * * * * * * * * * * * * * * * * * *")
+        team1.setPlayerName()
+        team2.setPlayerName()
     }
     
     func pickCharacter(team: Team){
@@ -46,45 +35,47 @@ class Display{
         var picking: Int = 0
         var nameIsVailable: Bool = false
         
-        /* Demander le héro */
+        /* Demander le héro numéro du héro */
         repeat{
-            print("\(team.getPlayerName()), choisissez un Champion:")
+            print("\(team.getPlayerName()), choisissez un héro:")
             input =  readLine()
             if let input = input{
             picking = (input as NSString).integerValue
-//                picking = Int(input)! //conversion String to Int
             }
         }while (picking < 1  || picking > 4) //choix du pick de 1 à 4.
         
         /* Demander le nom du héro */
         repeat{
             print("Choisir le nom de ce héro")
-            input =  readLine()                 //entré au clavier
+            input = readLine()                 //entré au clavier
             if let input = input{               //ouverture de l'optionnel
                 nameCharacter = input           //affectation de la valeur de l'optionnel
             }
+    
+            if nameCharacter != ""{
+                nameIsVailable = checkNameCharacter(name: nameCharacter)
+            }
             
-        /* Vérifier si le nom est disponible */
-           nameIsVailable = checkName(name: nameCharacter)
-        }while(nameIsVailable != true) //tant que le nom n'est pas dispo, on boucle
+        }while((nameCharacter == "") || (nameIsVailable == false)) //tant que le nom n'est pas dispo, on boucle
         
         /* Création et ajout du personnage à l'équipe */
         makeCharacter(team: team, characterName: nameCharacter, picking: picking)
     }
     
     //Vérifier si le nom de personnage est unique
-    func checkName(name: String) -> Bool{
+    func checkNameCharacter(name: String) -> Bool{
         var vailable: Bool = false
         
         for index in Display.arrayName{     //check tout le tableau à la recherche de doublon
-            if index == name{               //si doublon alors redemande un autre nom
-                vailable = false
+            if(index == name){               //si doublon alors redemande un autre nom
                 print("Le nom \(name) est déjà pris")
+                vailable = false
+                return vailable
             }else{
                 vailable = true                //le nom est disponible
-                Display.arrayName.append(name) //ajout le nouveau à la bdd de noms
             }
         }
+        Display.arrayName.append(name) //ajout le nouveau à la bdd de noms
         return vailable
     }
     
@@ -103,11 +94,14 @@ class Display{
         }
     }
     
+    
     func pickPhase(team1: Team, team2: Team){
         var pickTeam1: Int = 3
         var pickTeam2: Int = 3
         var turn: Bool = true
         var indexPick = 2
+        var selectorP1 = ""
+        var selectorP2 = ""
         
         //Tour par tour
         //Ordre de pick p1, p2, p2, p1, p1, p2
@@ -121,54 +115,98 @@ class Display{
             
             switch turn{
                 case true:
-                    print("- - - - - - - - - - - - - -")
-                    print("Picks restant: \(pickTeam1)")
+                    selectorP1 = "  -> "
+                    selectorP2 = "     "
+                    displayPickPhase(selectorP1: selectorP1, selectorP2: selectorP2)
                     pickCharacter(team: team1)
                     pickTeam1 -= 1
                 case false:
-                    print("- - - - - - - - - - - - - -")
-                    print("Picks restant: \(pickTeam2)")
+                    selectorP1 = "     "
+                    selectorP2 = "  -> "
+                    displayPickPhase(selectorP1: selectorP1, selectorP2: selectorP2)
                     pickCharacter(team: team2)
                     pickTeam2 -= 1
             }
             indexPick += 1
         }
+        resumePick()
     }
     
+    func displayPickPhase(selectorP1: String, selectorP2: String){
+        var bloc1: String
+        var bloc2: String
+        var arrayIndicatorPlayer1: [String] = ["Slot1","Slot2","Slot3"]
+        var arrayIndicatorPlayer2: [String] = ["Slot1","Slot2","Slot3"]
+        var lengthArrayTeam1: Int
+        var lengthArrayTeam2: Int
+        var currentPickPlayer1: String = ""
+        var currentPickPlayer2: String = ""
+        
+        
+        //FORMAT PICK PLAYER 1
+        lengthArrayTeam1 = team1.arrayCharac.count
+        if(lengthArrayTeam1 > 0){
+            for index in 0...(lengthArrayTeam1-1){
+                arrayIndicatorPlayer1[index] = team1.getspecializationName(index: index)
+            }
+        }
+        for specializationName in arrayIndicatorPlayer1{
+            currentPickPlayer1 += specializationName + " "
+        }
+        
+        //FORMAT PICK PLAYER 2
+        lengthArrayTeam2 = team2.arrayCharac.count
+        if(lengthArrayTeam2 > 0){
+            for index in 0...(lengthArrayTeam2-1){
+                arrayIndicatorPlayer2[index] = team2.getspecializationName(index: index)
+            }
+        }
+        for specializationName in arrayIndicatorPlayer2{
+            currentPickPlayer2 += specializationName + " "
+        }
+        
+        //FORMAT PICK PLAYER 1 PLAYER 2
+        bloc2 = selectorP1
+            + "Equipe de \(team1.getPlayerName()), [\(currentPickPlayer1)]"
+            + "\n"
+            + selectorP2
+            + "Equipe de \(team2.getPlayerName()), [\(currentPickPlayer2)]"
+        
+        //DISPLAY CURRENT PICK PLAYER1  & PLAYER2
+        print("\n\n\n\n\n\n\n\n\n")
+        print(" * * * * * * PHASE DE PICK * * * * * * *")
+        print("             Liste des héros            ")
+        print("     Role      | Pv  |  Item   | Dégats ")
+        print("  1.Combattant | 100 |  épée   |  10    ")
+        print("  2.Mage       | 80  |         |  10    ")
+        print("  3.Colosse    | 200 |         |  5     ")
+        print("  4.Nain       | 50  |         |  20    ")
+        print("  ------------------------------------  ")
+        print(bloc2)
+    }
     
+    //RESUME THE DETAILS OF THE PICKS
     func resumePick(){
         var line1: String = ""
         var line2: String = ""
-        var tab: [String] = []
         
-        line1 = "|" + cell(str: team1.getPlayerName(), format: .large)
-              + "|" + cell(str: "", format: .small)
-              + "|" + cell(str: team2.getPlayerName(), format: .large) + "|"
-              + "\n"
-              + "|" + cell(str: "Nom", format: .medium)
-              + "|" + cell(str: "Role", format: .medium)
-              + "|" + cell(str: "HP", format: .small)
-              + "|" + cell(str: "", format: .small)
-              + "|" + cell(str: "Nom", format: .medium)
-              + "|" + cell(str: "Role", format: .medium)
-              + "|" + cell(str: "HP", format: .small) + "|"
+        line1 = cell(str: team1.getPlayerName(), format: .medium)
+              + cell(str: team2.getPlayerName(), format: .medium)
+
 
         for index in 0...2{
-        line2 = "|" + cell(str: team1.getCharacter(index: index).getCharacterName(), format: .medium)
-              + "|" + cell(str: team1.getCharacter(index: index).specializationName, format: .medium)
-              + "|" + cell(str: team1.getCharacter(index: index).getHealthPoints(), format: .small)
-              + "|" + cell(str: "\(index + 1). .\(index + 1)", format: .small)
-              + "|" + cell(str: team2.getCharacter(index: index).getCharacterName(), format: .medium)
-              + "|" + cell(str: team2.getCharacter(index: index).specializationName, format: .medium)
-              + "|" + cell(str: team2.getCharacter(index: index).getHealthPoints(), format: .small) + "|"
-            
-            tab.append(line2)
+        line2 += "  " + cell(str: (team1.getCharacter(index: index).getCharacterName()) + "(" + team1.getspecializationName(index: index) + ")", format: .medium)
+              + cell(str: (team2.getCharacter(index: index).getCharacterName()) + "(" + team2.getspecializationName(index: index) + ")", format: .medium) + "\n"
         }
         
+        print("\n\n\n\n\n\n\n\n\n")
+        print("* * * * RESUMÉ DES EQUIPES * * * *")
         print(line1)
-        for index in 0...2{
-            print(tab[index])
-        }
+        print(line2)
+//        print(line1)
+//        for index in 0...2{
+//            print(tab[index])
+//        }
     }
     
     func reset(){

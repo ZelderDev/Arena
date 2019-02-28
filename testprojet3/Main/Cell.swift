@@ -29,12 +29,12 @@ func cell(str: Any, format: Size) -> String{
     case .large:
         length = 29
     case .medium:
-        length = 11
+        length = 20
     case.small:
         length = 5
     }
     
-    var lenghtName = convert.count                 //taille de la cdc
+    var lenghtName = convert.count              //taille de la cdc
     var nbrSpacing: Int = length - lenghtName   //taille espace à compléter
     
     if(nbrSpacing != 0){

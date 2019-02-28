@@ -86,7 +86,10 @@ class Combat{
                 //Sélectionner votre héro entre 1 et 3
                 print("\(ally.getPlayerName()), choisissez un champion à jouer")
                 emitter = selectCharacter(team: ally)
-            
+                //ajouter la fonction randChest
+                //remplacer l'item actuel par celui loot
+                //remplacer l'attaque actuel par la nouvelle
+                
                 //Sélectionne un ennemi
                 if emitter is DamageDealer{
                     print("\(ally.getPlayerName()), choisissez un champion à attaquer")

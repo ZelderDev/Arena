@@ -10,18 +10,29 @@ import Foundation
 
 class Warrior: DamageDealer{
     
-    
+
     override init(name: String){
         super.init(name: name)
         //self.characterName = name
         self.specializationName = "Combattant"
         self.rawHp = 100
-        self.rawDamage = 10
         self.healthPoints = rawHp
-        self.damage = rawDamage
-
+        self.itemSelector = [WarriorItems.sword.rawValue, WarriorItems.axe.rawValue, WarriorItems.hammer.rawValue, WarriorItems.dolk.rawValue]
+        self.items = ["épée":10, "hache":15, "masse": 11, "dague":9]
+        self.damage = items[itemSelector[0]]!   //épée
+        self.itemName = itemSelector[0]         //épée
+    }
+    
+    enum WarriorItems: String{
+        case sword = "épée"
+        case axe = "hache"
+        case hammer = "masse"
+        case dolk = "dague"
     }
     
 
+    
+    
+    
 }
 

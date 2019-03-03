@@ -19,6 +19,7 @@
 		5F150C25221F98F10052AF04 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F150C24221F98F10052AF04 /* Cell.swift */; };
 		5F150C29221FD9B60052AF04 /* Combat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F150C28221FD9B60052AF04 /* Combat.swift */; };
 		5F5B2179221327DC008CD529 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5B2178221327DC008CD529 /* main.swift */; };
+		5F7F0CB02227F7EB001B7ACE /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F0CAF2227F7EB001B7ACE /* Random.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,7 @@
 		5F150C28221FD9B60052AF04 /* Combat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combat.swift; sourceTree = "<group>"; };
 		5F5B2175221327DC008CD529 /* testprojet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testprojet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5B2178221327DC008CD529 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		5F7F0CAF2227F7EB001B7ACE /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				5F5B2178221327DC008CD529 /* main.swift */,
 				5F150C24221F98F10052AF04 /* Cell.swift */,
+				5F7F0CAF2227F7EB001B7ACE /* Random.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -118,9 +121,9 @@
 		5F5B218522133D2F008CD529 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				5F0A66372218CDD50059F5F2 /* Display.swift */,
 				5F150C28221FD9B60052AF04 /* Combat.swift */,
 				5F0A663B221981290059F5F2 /* Team.swift */,
-				5F0A66372218CDD50059F5F2 /* Display.swift */,
 				5F0A66222216F8BE0059F5F2 /* Character.swift */,
 				5F0A66262217017E0059F5F2 /* Character inheritance */,
 			);
@@ -186,6 +189,7 @@
 			files = (
 				5F0A662E221704790059F5F2 /* Warrior.swift in Sources */,
 				5F0A662A221702240059F5F2 /* Healer.swift in Sources */,
+				5F7F0CB02227F7EB001B7ACE /* Random.swift in Sources */,
 				5F0A6635221717470059F5F2 /* Dwarf.swift in Sources */,
 				5F5B2179221327DC008CD529 /* main.swift in Sources */,
 				5F150C25221F98F10052AF04 /* Cell.swift in Sources */,

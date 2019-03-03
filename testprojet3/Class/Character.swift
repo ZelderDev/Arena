@@ -16,7 +16,10 @@ class Character{
     var damage: Int = 0
     var rawHp = 1
     var rawDamage = 0
-    var item: [String:Int] = [:]
+    var itemName = ""
+    var items: [String:Int] = [:]
+    var itemSelector: [String] = []
+    
     
     init(name: String){
         self.characterName = name
@@ -58,12 +61,25 @@ class Character{
     func getDamage() -> Int{
         return damage
     }
-    func setDamage(damage: Int){
-        self.damage = damage
+    func setDamage(itemSelector: String){
+        self.damage = items[itemSelector]!
     }
     
     func getIsAlive() -> Bool{
         return isAlive
     }
+    
+    //Retourne le tableau enum.String
+    func getItemSelector() -> [String]{
+        return itemSelector
+    }
+    
+    func setItemName(itemName: String){
+        self.itemName = itemName
+    }
+    func getItemName() -> String {
+        return itemName
+    }
+    
 /* ============================================= */
 }

@@ -14,6 +14,6 @@ class Healer: Character{
     
     override init(name: String){
         super.init(name: name)
-        self.item = ["Bâton": 10]
+        self.items = ["Bâton": 10]
     }
 }

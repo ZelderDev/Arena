@@ -35,7 +35,7 @@ class Display{
         var picking: Int = 0
         var nameIsVailable: Bool = false
         
-        /* Demander le héro numéro du héro */
+        /* Demander numéro du héro */
         repeat{
             print("\(team.getPlayerName()), choisissez un héro:")
             input =  readLine()
@@ -47,9 +47,9 @@ class Display{
         /* Demander le nom du héro */
         repeat{
             print("Choisir le nom de ce héro")
-            input = readLine()                 //entré au clavier
-            if let input = input{               //ouverture de l'optionnel
-                nameCharacter = input           //affectation de la valeur de l'optionnel
+            input = readLine()            //entré au clavier
+            if let input = input{         //ouverture de l'optionnel
+                nameCharacter = input     //affectation de la valeur de l'optionnel
             }
     
             if nameCharacter != ""{
@@ -195,18 +195,19 @@ class Display{
 
 
         for index in 0...2{
-        line2 += "  " + cell(str: (team1.getCharacter(index: index).getCharacterName()) + "(" + team1.getspecializationName(index: index) + ")", format: .medium)
-              + cell(str: (team2.getCharacter(index: index).getCharacterName()) + "(" + team2.getspecializationName(index: index) + ")", format: .medium) + "\n"
+        line2 += "  "
+               + cell(str: (team1.getCharacter(index: index).getCharacterName())
+               + "(" + team1.getspecializationName(index: index)
+               + ")", format: .medium)
+               + cell(str: (team2.getCharacter(index: index).getCharacterName())
+               + "(" + team2.getspecializationName(index: index)
+               + ")", format: .medium) + "\n"
         }
         
         print("\n\n\n\n\n\n\n\n\n")
         print("* * * * RESUMÉ DES EQUIPES * * * *")
         print(line1)
         print(line2)
-//        print(line1)
-//        for index in 0...2{
-//            print(tab[index])
-//        }
     }
     
     func reset(){

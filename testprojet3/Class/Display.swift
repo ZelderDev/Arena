@@ -174,14 +174,14 @@ class Display{
         
         //DISPLAY CURRENT PICK PLAYER1  & PLAYER2
         print("\n\n\n\n\n\n\n\n\n")
-        print(" * * * * * * PHASE DE PICK * * * * * * *")
-        print("             Liste des héros            ")
-        print("     Role      | Pv  |  Item   | Dégats ")
-        print("  1.Combattant | 100 |  épée   |  10    ")
-        print("  2.Mage       | 80  |         |  10    ")
-        print("  3.Colosse    | 200 |         |  5     ")
-        print("  4.Nain       | 50  |         |  20    ")
-        print("  ------------------------------------  ")
+        print(" * * * * * * PHASE DE PICK * * * * * * * ")
+        print("             Liste des héros             ")
+        print("     Roles     | Pv  |  Items   | Dégats ")
+        print("  1.Combattant | 100 |  épée    |  10    ")
+        print("  2.Prêtre     | 80  |  bâton   |  10    ")
+        print("  3.Colosse    | 200 |  masse   |  5     ")
+        print("  4.Nain       | 50  |  arbalète|  20    ")
+        print("  ------------------------------------   ")
         print(bloc2)
     }
     

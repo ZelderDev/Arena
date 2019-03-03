@@ -28,7 +28,7 @@ func random(character: Character){
         newDamage = character.getDamage()
         character.setItemName(itemName: item)   //nom du nouvel l'item
         
-        print("\n\n\n\n\n\n\n\n\n")
+        print("\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print("UN COFFRE TOMBE DU CIEL ET LAISSE ECHAPPER QUELQUE CHOSE")
         sleep(1)
         print("\(character.getCharacterName()) s'équipe du nouvel item: \(item),")

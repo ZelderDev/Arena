@@ -26,14 +26,21 @@ class Combat{
         var input: String?
 
         repeat{
+            
             input =  readLine()
             if let input = input{
                 picking = (input as NSString).integerValue
             }
-            if(team.getCharacter(index: picking-1).isAlive == false){
-                print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort ! Choissir un autre prersonnage")
+            if(picking > 0 && picking <= 3){
+                if(team.getCharacter(index: picking-1).isAlive == false){
+                    print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort !")
+                }
+            }else{
+                print("Choisissez un héro dans la liste entre 1 et 3:")
             }
         }while(picking < 1 || picking > 3 || ((team.getCharacter(index: picking-1).isAlive == false)))
+        
+        print("Après le while")
         
         switch picking{
             case 1:
@@ -165,8 +172,6 @@ class Combat{
         var bloc: String = ""
         var line1: String = ""
         
-
-
         line1 += "       "
             + cell(str: "Noms", format: .medium)
             + cell(str: "Pv", format: .small)
@@ -199,19 +204,7 @@ class Combat{
             sleep(1)
             chrono -= 1
         }
+        print("\n")
     }
 }//end Combat
 
-/*
- 
- * * * * * * PHASE DE COMBAT - TOUR n°1 * * * * * *
- La main est à Joueur 1.
- EQUIPE DE <JOUEUR 1>
- Héro        pv       item     attaque
- 1. :)
- 2. =)
- 3. >)
- 
- Joueur, choisissez un héro à jouer parmi votre équipe
- 
- */

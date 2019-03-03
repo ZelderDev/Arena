@@ -82,7 +82,7 @@ class Team{
     }
     
     func teamIsAlive() -> Bool{
-        if(getCharacter(index: 0).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false){
+        if(getCharacter(index: 0).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false && getCharacter(index: 2).getIsAlive() == false){
             return false
         }else{
             return true

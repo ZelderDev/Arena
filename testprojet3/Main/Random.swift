@@ -33,7 +33,7 @@ func random(character: Character){
         sleep(1)
         print("\(character.getCharacterName()) s'équipe du nouvel item: \(item),")
         print("son attaque passe de \(oldDamage) à \(newDamage)")
-        sleep(7)
+        sleep(3)
     }
 }
 

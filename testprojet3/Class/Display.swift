@@ -40,7 +40,7 @@ class Display{
             print("\(team.getPlayerName()), choisissez un héro:")
             input =  readLine()
             if let input = input{
-            picking = (input as NSString).integerValue
+                picking = (input as NSString).integerValue
             }
         }while (picking < 1  || picking > 4) //choix du pick de 1 à 4.
         

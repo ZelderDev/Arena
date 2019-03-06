@@ -14,12 +14,14 @@
 		5F0A6631221706980059F5F2 /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6630221706980059F5F2 /* Colossus.swift */; };
 		5F0A6633221711AF0059F5F2 /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6632221711AF0059F5F2 /* Priest.swift */; };
 		5F0A6635221717470059F5F2 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6634221717470059F5F2 /* Dwarf.swift */; };
-		5F0A66382218CDD50059F5F2 /* Display.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A66372218CDD50059F5F2 /* Display.swift */; };
+		5F0A66382218CDD50059F5F2 /* Picks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A66372218CDD50059F5F2 /* Picks.swift */; };
 		5F0A663C221981290059F5F2 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A663B221981290059F5F2 /* Team.swift */; };
 		5F150C25221F98F10052AF04 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F150C24221F98F10052AF04 /* Cell.swift */; };
-		5F150C29221FD9B60052AF04 /* Combat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F150C28221FD9B60052AF04 /* Combat.swift */; };
+		5F150C29221FD9B60052AF04 /* Battle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F150C28221FD9B60052AF04 /* Battle.swift */; };
 		5F5B2179221327DC008CD529 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F5B2178221327DC008CD529 /* main.swift */; };
 		5F7F0CB02227F7EB001B7ACE /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F0CAF2227F7EB001B7ACE /* Random.swift */; };
+		5F7F0CB2222D1166001B7ACE /* Ninja.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F0CB1222D1166001B7ACE /* Ninja.swift */; };
+		5F7F0CB4222D826E001B7ACE /* Statistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F7F0CB3222D826E001B7ACE /* Statistics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,13 +44,15 @@
 		5F0A6630221706980059F5F2 /* Colossus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colossus.swift; sourceTree = "<group>"; };
 		5F0A6632221711AF0059F5F2 /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
 		5F0A6634221717470059F5F2 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
-		5F0A66372218CDD50059F5F2 /* Display.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Display.swift; sourceTree = "<group>"; };
+		5F0A66372218CDD50059F5F2 /* Picks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Picks.swift; sourceTree = "<group>"; };
 		5F0A663B221981290059F5F2 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		5F150C24221F98F10052AF04 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
-		5F150C28221FD9B60052AF04 /* Combat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combat.swift; sourceTree = "<group>"; };
+		5F150C28221FD9B60052AF04 /* Battle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battle.swift; sourceTree = "<group>"; };
 		5F5B2175221327DC008CD529 /* testprojet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = testprojet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F5B2178221327DC008CD529 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		5F7F0CAF2227F7EB001B7ACE /* Random.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		5F7F0CB1222D1166001B7ACE /* Ninja.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ninja.swift; sourceTree = "<group>"; };
+		5F7F0CB3222D826E001B7ACE /* Statistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,7 @@
 				5F0A6630221706980059F5F2 /* Colossus.swift */,
 				5F0A6632221711AF0059F5F2 /* Priest.swift */,
 				5F0A6634221717470059F5F2 /* Dwarf.swift */,
+				5F7F0CB1222D1166001B7ACE /* Ninja.swift */,
 			);
 			path = Role;
 			sourceTree = "<group>";
@@ -121,8 +126,9 @@
 		5F5B218522133D2F008CD529 /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				5F0A66372218CDD50059F5F2 /* Display.swift */,
-				5F150C28221FD9B60052AF04 /* Combat.swift */,
+				5F0A66372218CDD50059F5F2 /* Picks.swift */,
+				5F150C28221FD9B60052AF04 /* Battle.swift */,
+				5F7F0CB3222D826E001B7ACE /* Statistics.swift */,
 				5F0A663B221981290059F5F2 /* Team.swift */,
 				5F0A66222216F8BE0059F5F2 /* Character.swift */,
 				5F0A66262217017E0059F5F2 /* Character inheritance */,
@@ -193,13 +199,15 @@
 				5F0A6635221717470059F5F2 /* Dwarf.swift in Sources */,
 				5F5B2179221327DC008CD529 /* main.swift in Sources */,
 				5F150C25221F98F10052AF04 /* Cell.swift in Sources */,
-				5F0A66382218CDD50059F5F2 /* Display.swift in Sources */,
+				5F0A66382218CDD50059F5F2 /* Picks.swift in Sources */,
 				5F0A6633221711AF0059F5F2 /* Priest.swift in Sources */,
 				5F0A6631221706980059F5F2 /* Colossus.swift in Sources */,
 				5F0A663C221981290059F5F2 /* Team.swift in Sources */,
+				5F7F0CB2222D1166001B7ACE /* Ninja.swift in Sources */,
 				5F0A6628221702160059F5F2 /* DamageDealer.swift in Sources */,
 				5F0A66232216F8BE0059F5F2 /* Character.swift in Sources */,
-				5F150C29221FD9B60052AF04 /* Combat.swift in Sources */,
+				5F7F0CB4222D826E001B7ACE /* Statistics.swift in Sources */,
+				5F150C29221FD9B60052AF04 /* Battle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

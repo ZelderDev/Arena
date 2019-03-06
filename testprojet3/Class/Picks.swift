@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Display{
+class Picks{
     var team1: Team
     var team2: Team
     var playerName1: String = ""
@@ -42,7 +42,7 @@ class Display{
             if let input = input{
                 picking = (input as NSString).integerValue
             }
-        }while (picking < 1  || picking > 4) //choix du pick de 1 à 4.
+        }while (picking < 1  || picking > 5) //choix du pick de 1 à 5.
         
         /* Demander le nom du héro */
         repeat{
@@ -66,7 +66,7 @@ class Display{
     func checkNameCharacter(name: String) -> Bool{
         var vailable: Bool = false
         
-        for index in Display.arrayName{     //check tout le tableau à la recherche de doublon
+        for index in Picks.arrayName{     //check tout le tableau à la recherche de doublon
             if(index == name){               //si doublon alors redemande un autre nom
                 print("Le nom \(name) est déjà pris")
                 vailable = false
@@ -75,7 +75,7 @@ class Display{
                 vailable = true                //le nom est disponible
             }
         }
-        Display.arrayName.append(name) //ajout le nouveau à la bdd de noms
+        Picks.arrayName.append(name) //ajout le nouveau à la bdd de noms
         return vailable
     }
     
@@ -89,6 +89,8 @@ class Display{
             team.addCharacter(character: Colossus(name: characterName))
         case 4:
             team.addCharacter(character: Dwarf(name: characterName))
+        case 5:
+            team.addCharacter(character: Ninja(name: characterName))
         default:
             print("Erreur - Function - makeCharacter")
         }
@@ -181,6 +183,7 @@ class Display{
         print("  2.Prêtre     | 80  |  bâton   |  10    ")
         print("  3.Colosse    | 200 |  masse   |  5     ")
         print("  4.Nain       | 50  |  arbalète|  20    ")
+        print("  5.Ninja      | 10  | poignard |  10    ")
         print("  ------------------------------------   ")
         print(bloc2)
     }

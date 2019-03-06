@@ -13,9 +13,45 @@ class Team{
     var arrayCharac: [Character] = []
     static var checkNamePlayer:[String] = ["Nono","Robert"]
 
+    var teamHealingTaken = 0
+    var teamHealingDone = 0
+    var teamDamageTaken = 0
+    var teamDamageDone = 0
     
     init(name: String){
         self.playerName = name
+    }
+    
+    //STATISTICS healing taken by the team
+    func getTeamHealingTaken() -> Int{
+        for character in arrayCharac {
+            self.teamHealingTaken += character.getHealingTaken()
+        }
+        return teamHealingTaken
+    }
+    
+    //STATISTICS healing done by the team
+    func getTeamHealingDone() -> Int{
+        for character in arrayCharac {
+            self.teamHealingDone += character.getHealingDone()
+        }
+        return teamHealingDone
+    }
+    
+    //STATISTICS damage taken by the team
+    func getTeamDamageTaken() -> Int {
+        for character in arrayCharac {
+            self.teamDamageTaken += character.getDamageTaken()
+        }
+        return teamDamageTaken
+    }
+    
+    //STATISTICS Damage done by the team
+    func getTeamDamageDone() -> Int {
+        for character in arrayCharac {
+            self.teamDamageDone += character.getDamageDone()
+        }
+        return teamDamageDone
     }
     
     /* PLAYER NAME */
@@ -82,7 +118,7 @@ class Team{
     }
     
     func teamIsAlive() -> Bool{
-        if(getCharacter(index: 0).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false){
+        if(getCharacter(index: 0).getIsAlive() == false && getCharacter(index: 1).getIsAlive() == false && getCharacter(index: 2).getIsAlive() == false ){
             return false
         }else{
             return true

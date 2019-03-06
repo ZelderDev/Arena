@@ -20,12 +20,50 @@ class Character{
     var items: [String:Int] = [:]
     var itemSelector: [String] = []
     
+    var healingTaken = 0
+    var healingDone = 0
+    var damageTaken = 0
+    var damageDone = 0
     
     init(name: String){
         self.characterName = name
     }
     
+    
+    
 /* ========== GETTER & SETTER ========== */
+    //GET & SET healingTaken
+    func getHealingTaken() -> Int{
+        return healingTaken
+    }
+    func setHealingTaken(heal: Int){
+        self.healingTaken += heal
+    }
+    
+    //GET & SET healingDone
+    func getHealingDone() -> Int{
+        return healingDone
+    }
+    func setHealingDone(heal: Int){
+        self.healingDone += heal
+    }
+    
+    //GET & SET damage taken
+    func getDamageTaken() -> Int{
+        return damageTaken
+    }
+    func setDamageTaken(damage: Int){
+        self.damageTaken += damage
+    }
+    
+    //GET & SET damage done
+    func getDamageDone() -> Int{
+        return damageDone
+    }
+    func setDamageDone(damage: Int){
+        self.damageDone += damage
+    }
+    
     //GET & SET characterName
     func getCharacterName() -> String{
         return characterName
@@ -65,6 +103,7 @@ class Character{
         self.damage = items[itemSelector]!
     }
     
+    //GET if the character is alive
     func getIsAlive() -> Bool{
         return isAlive
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Combat{
+class Battle{
     var team1: Team
     var team2: Team
     var turn: Int = 1
@@ -26,14 +26,20 @@ class Combat{
         var input: String?
 
         repeat{
+            
             input =  readLine()
             if let input = input{
                 picking = (input as NSString).integerValue
             }
-            if(team.getCharacter(index: picking-1).isAlive == false){
-                print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort ! Choissir un autre prersonnage")
+            if(picking > 0 && picking <= 3){
+                if(team.getCharacter(index: picking-1).isAlive == false){
+                    print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort !")
+                }
+            }else{
+                print("Choisissez un héro dans la liste entre 1 et 3:")
             }
         }while(picking < 1 || picking > 3 || ((team.getCharacter(index: picking-1).isAlive == false)))
+        
         
         switch picking{
             case 1:
@@ -53,6 +59,11 @@ class Combat{
         var targetHp = target.getHealthPoints()
         var attackerAttack = attacker.getDamage()
         
+        //STATS - update the attacker stats with setDamageDone
+        attacker.setDamageDone(damage: attackerAttack)
+        //STATS - upadate the target stats witch setDamageTaken
+        target.setDamageTaken(damage: attackerAttack)
+        
         print("\(attacker.getCharacterName()) attaque \(target.getCharacterName()) et lui inflige \(attackerAttack) points de dégâts")
         targetHp -= attackerAttack
         target.setHealthPoints(hp: targetHp)
@@ -62,6 +73,11 @@ class Combat{
     func heal(healer: Character, target: Character){
         var targetHp = target.getHealthPoints()
         var healerHeal = healer.getDamage()
+        
+        //STATS - update the healer stats with setHealingDone
+        healer.setHealingDone(heal: healerHeal)
+        //STATS - upadate the target stats witch setHealingTaken
+        target.setHealingTaken(heal: healerHeal)
         
         print("\(healer.getCharacterName()) soigne \(target.getCharacterName()) et lui rend \(healerHeal) points de vie")
         targetHp += healerHeal
@@ -75,7 +91,7 @@ class Combat{
         var ally: Team
         var enemy: Team
         var indexTurn: Int = 0
-        var resume = Display(team1: team1, team2: team2)
+        var resume = Picks(team1: team1, team2: team2)
         var text: String = ""
         
         //Tant que tous les perso d'une équipe sont vivants alors on joue
@@ -165,8 +181,6 @@ class Combat{
         var bloc: String = ""
         var line1: String = ""
         
-
-
         line1 += "       "
             + cell(str: "Noms", format: .medium)
             + cell(str: "Pv", format: .small)
@@ -192,26 +206,12 @@ class Combat{
     }
     
     func nextPlayer(){
-        var chrono = 5
-        print("Fin du tour dans", terminator:" ")
-        for _ in 0...5{
-            print(chrono, terminator:" ")
+        print("FIN DU TOUR, veuillez patienter", terminator:" ")
+        for _ in 1...3{
+            print(".", terminator:"")
             sleep(1)
-            chrono -= 1
         }
+        print("\n")
     }
 }//end Combat
 
-/*
- 
- * * * * * * PHASE DE COMBAT - TOUR n°1 * * * * * *
- La main est à Joueur 1.
- EQUIPE DE <JOUEUR 1>
- Héro        pv       item     attaque
- 1. :)
- 2. =)
- 3. >)
- 
- Joueur, choisissez un héro à jouer parmi votre équipe
- 
- */

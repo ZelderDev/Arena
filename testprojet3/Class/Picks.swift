@@ -67,7 +67,7 @@ class Picks{
         var vailable: Bool = false
         
         for index in Picks.arrayName{     //check tout le tableau à la recherche de doublon
-            if(index == name){               //si doublon alors redemande un autre nom
+            if(index == name){            //si doublon alors redemande un autre nom
                 print("Le nom \(name) est déjà pris")
                 vailable = false
                 return vailable

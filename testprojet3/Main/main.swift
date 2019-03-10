@@ -26,7 +26,7 @@ team2.addCharacter(character: Warrior(name: "Wallfax"))
 //team2.getCharacter(index: 2).setHealthPoints(hp: 0)
 
 
-//show.askPlayerName()
-//show.pickPhase(team1: team1, team2: team2)
+show.askPlayerName()
+show.pickPhase(team1: team1, team2: team2)
 battle.round()
 stats.displayStatistics()

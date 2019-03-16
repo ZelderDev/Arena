@@ -8,6 +8,7 @@
 
 import Foundation
 
+var turn = 0
 var team1 = Team(name: "Joueur 1")
 var team2 = Team(name: "Joueur 2")
 var show = Picks(team1: team1, team2: team2)
@@ -20,13 +21,45 @@ var stats = Statistics(team1: team1, team2: team2)
 //team2.addCharacter(character: Ninja(name: "Yhlia"))
 //team2.addCharacter(character: Priest(name: "Kervam"))
 //team2.addCharacter(character: Warrior(name: "Wallfax"))
-
+//
+////Stats - Team1
+////Dwarf
+//team1.getCharacter(index: 0).setDamageDone(damage: 350)
+//team1.getCharacter(index: 0).setDamageTaken(damage: 100)
+//team1.getCharacter(index: 0).setHealingTaken(heal: 50)
+////Priest
+//team1.getCharacter(index: 1).setHealingDone(heal: 290)
+//team1.getCharacter(index: 1).setDamageTaken(damage: 100)
+//team1.getCharacter(index: 1).setHealingTaken(heal: 50)
+////Colossus
+//team1.getCharacter(index: 2).setDamageDone(damage: 50)
+//team1.getCharacter(index: 2).setDamageTaken(damage: 500)
+//team1.getCharacter(index: 2).setHealingTaken(heal: 50)
+//
+////Stats - Team2
+////Ninja
+//team2.getCharacter(index: 0).setDamageDone(damage: 400)
+//team2.getCharacter(index: 0).setDamageTaken(damage: 150)
+//team2.getCharacter(index: 0).setHealingTaken(heal: 60)
+////Priest
+//team2.getCharacter(index: 1).setHealingDone(heal: 300)
+//team2.getCharacter(index: 1).setDamageTaken(damage: 110)
+//team2.getCharacter(index: 1).setHealingTaken(heal: 50)
+////Warrior
+//team2.getCharacter(index: 2).setDamageDone(damage: 50)
+//team2.getCharacter(index: 2).setDamageTaken(damage: 500)
+//team2.getCharacter(index: 2).setHealingTaken(heal: 50)
+//
+//
+////Death of the team2
 //team2.getCharacter(index: 0).setHealthPoints(hp: 0)
 //team2.getCharacter(index: 1).setHealthPoints(hp: 0)
 //team2.getCharacter(index: 2).setHealthPoints(hp: 0)
 
 
+
 show.askPlayerName()
 show.pickPhase(team1: team1, team2: team2)
-battle.round()
-stats.displayStatistics()
+turn = battle.round()
+//turn = 20
+stats.displayStatistics(turn: turn)

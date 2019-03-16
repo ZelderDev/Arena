@@ -8,17 +8,18 @@
 
 import Foundation
 
+
 class Character{
     var characterName: String = "Unnamed"
     var specializationName: String = "None"
     var healthPoints: Int = 0
     var isAlive = true
     var damage: Int = 0
-    var rawHp = 1
+    var rawHp = 1                       //Fixe les pv max du héro en cas d'over heal
     var rawDamage = 0
     var itemName = ""
-    var items: [String:Int] = [:]
-    var itemSelector: [String] = []
+    var items: [String:Int] = [:]       //Item propre à chaque héro
+    var itemSelector: [String] = []     //
     
     var healingTaken = 0
     var healingDone = 0
@@ -108,7 +109,7 @@ class Character{
         return isAlive
     }
     
-    //Retourne le tableau enum.String
+    //Return the array enum.String for Random
     func getItemSelector() -> [String]{
         return itemSelector
     }

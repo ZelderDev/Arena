@@ -24,10 +24,21 @@ class Battle{
         var characSelected = Character(name: "Unnamed")
         var picking: Int = 0
         var input: String?
+        var checkInput = false
 
-        repeat{
+        
+        repeat{ //As long as the keyboard input is not correct or the selected character is dead then
             
-            input =  readLine()
+            while(checkInput == false){
+                input =  readLine()
+                
+                if(input != "1" && input != "2" && input != "3" && input != "4"){
+                    checkInput = false
+                    print("Saisir UNIQUEMENT un héros entre 1 et 3.")
+                }else{
+                    checkInput = true
+                }
+            }
             if let input = input{
                 picking = (input as NSString).integerValue
             }
@@ -36,11 +47,11 @@ class Battle{
                     print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort !")
                 }
             }else{
-                print("Choisissez un héro dans la liste entre 1 et 3:")
+                print("Choisissez un héros dans la liste entre 1 et 3:")
             }
         }while(picking < 1 || picking > 3 || ((team.getCharacter(index: picking-1).isAlive == false)))
         
-        
+        //Selects the character chosen by the player
         switch picking{
             case 1:
                 characSelected = team.getCharacter(index: picking-1)
@@ -57,7 +68,7 @@ class Battle{
     //ACTION: ATTACK
     func attack(attacker: Character, target: Character){
         var targetHp = target.getHealthPoints()
-        var attackerAttack = attacker.getDamage()
+        let attackerAttack = attacker.getDamage()
         
         //STATS - update the attacker stats with setDamageDone
         attacker.setDamageDone(damage: attackerAttack)
@@ -72,7 +83,7 @@ class Battle{
     //ACTION: HEAL
     func heal(healer: Character, target: Character){
         var targetHp = target.getHealthPoints()
-        var healerHeal = healer.getDamage()
+        let healerHeal = healer.getDamage()
         
         //STATS - update the healer stats with setHealingDone
         healer.setHealingDone(heal: healerHeal)
@@ -84,14 +95,15 @@ class Battle{
         target.setHealthPoints(hp: targetHp)
     }
     
-    func round(){
+    //Manage turn by turn
+    //Manage the actions of players and characters
+    func round() -> Int{
         var round: Bool = true  //player1 begins
         var target: Character = Character(name: "Unnamed")
         var emitter : Character = Character(name: "Unnamed")
         var ally: Team
         var enemy: Team
         var indexTurn: Int = 0
-        var resume = Picks(team1: team1, team2: team2)
         var text: String = ""
         
         //Tant que tous les perso d'une équipe sont vivants alors on joue
@@ -103,80 +115,78 @@ class Battle{
             }
             
             switch round{
-            case true:          //player1
+            case true:          //Player1's turn
                 ally = team1
                 enemy = team2
             
-                //Sélectionner votre héro entre 1 et 3
+                //The player chooses among the characters of his team
                 text = "\(ally.getPlayerName()), choisissez un champion à jouer"
-                displayBattle(team:ally, str: text) //affichage combat
-                emitter = selectCharacter(team: ally) //selection d'un héro
+                displayBattle(team:ally, str: text)     //Shows the player's team
+                emitter = selectCharacter(team: ally)   //Select a hero to play
     
-                //randChest
+                //Random chest
                 random(character: emitter)
                 
-                //Sélectionne un ennemi
+                //Select an enemy
                 if emitter is DamageDealer{
                     text = "\(ally.getPlayerName()), choisissez un champion à attaquer"
-                    displayBattle(team:enemy, str: text)      //affichage
-                    target = selectCharacter(team: enemy)     //sélection
-                    attack(attacker: emitter, target: target) //action
-                    nextPlayer()                              //fin du tour du joueur
+                    displayBattle(team:enemy, str: text)      //Show the enemy team
+                    target = selectCharacter(team: enemy)     //Select a character to attack
+                    attack(attacker: emitter, target: target) //action (ATTACK !!!)
+                    nextPlayer()                              //End of this player's turn
                 }
-                //Sélectionne un allié
+                //Select an ally
                 if emitter is Healer{
                     text = "\(ally.getPlayerName()), choisissez un champion à soigner"
-                    displayBattle(team:ally, str: text)      //affichage
-                    target = selectCharacter(team: ally)
-                    heal(healer: emitter, target: target)
-                    nextPlayer()
+                    displayBattle(team:ally, str: text)      //Show the ally team
+                    target = selectCharacter(team: ally)     //Select a character to heal
+                    heal(healer: emitter, target: target)    //action (HEAL)
+                    nextPlayer()                             //End of this player's turn
                 }
             
-                round = false   //next player
-            case false:         //player2
+                round = false   //next player's turn
+                
+            case false:         //Player2's turn
                 ally = team2
                 enemy = team1
                 
-                //Sélectionner votre héro entre 1 et 3
                 text = "\(ally.getPlayerName()), choisissez un champion à jouer"
-                displayBattle(team:ally, str: text) //affichage combat
-                emitter = selectCharacter(team: ally) //selection d'un héro
+                displayBattle(team:ally, str: text)
+                emitter = selectCharacter(team: ally)
                 
-                //randChest
                 random(character: emitter)
                 
-                //Sélectionne un ennemi
                 if emitter is DamageDealer{
                     text = "\(ally.getPlayerName()), choisissez un champion à attaquer"
-                    displayBattle(team:enemy, str: text)      //affichage
-                    target = selectCharacter(team: enemy)     //sélection
-                    attack(attacker: emitter, target: target) //action
-                    nextPlayer()                              //fin du tour du joueur
+                    displayBattle(team:enemy, str: text)
+                    target = selectCharacter(team: enemy)
+                    attack(attacker: emitter, target: target)
+                    nextPlayer()
                 }
-                //Sélectionne un allié
+                
                 if emitter is Healer{
                     text = "\(ally.getPlayerName()), choisissez un champion à soigner"
-                    displayBattle(team:ally, str: text)      //affichage
+                    displayBattle(team:ally, str: text)
                     target = selectCharacter(team: ally)
                     heal(healer: emitter, target: target)
                     nextPlayer()
                 }
-                round = true    //next player
+                round = true
             }//end switch
             
-        }//end while
+        }//end - while one team is alive
 
-        //savoir qui a perdu
+        //Who to win, who lost the game
         if(team1.teamIsAlive() == false){
             print("\(team2.getPlayerName()) à gagné")
             //afficher
         }else if(team2.teamIsAlive() == false){
             print("\(team1.getPlayerName()) à gagné")
         }
-        
+        return turn
     }//end round
     
-    //affiche les héros du joueur selon l'action en cours (jouer, attaquer, soigner)
+    //Displays the characters according to the current action (play, attack, heal)
     func displayBattle(team: Team, str: String){
         var bloc: String = ""
         var line1: String = ""
@@ -205,6 +215,7 @@ class Battle{
         print(bloc, terminator: "")
     }
     
+    
     func nextPlayer(){
         print("FIN DU TOUR, veuillez patienter", terminator:" ")
         for _ in 1...3{
@@ -213,5 +224,5 @@ class Battle{
         }
         print("\n")
     }
-}//end Combat
+}//End of the battle
 

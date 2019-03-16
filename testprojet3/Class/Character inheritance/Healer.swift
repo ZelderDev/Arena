@@ -9,11 +9,6 @@
 import Foundation
 
 class Healer: Character{
-           //propriétés de classe (ou variables de classe)
     
     
-    override init(name: String){
-        super.init(name: name)
-        self.items = ["Bâton": 10]
-    }
 }

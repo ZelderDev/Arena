@@ -8,7 +8,7 @@
 
 import Foundation
 
-//tableau d'item du perso
+//Manage the random appearance of a chest during the combat phase
 func random(character: Character){
     var randChest: Int
     var randItem: Int
@@ -17,14 +17,14 @@ func random(character: Character){
     var newDamage: Int
     var oldDamage: Int
     
-    randChest = Int.random(in: 1...2) //50% de chance de loot un coffre
+    randChest = Int.random(in: 1...3) //33,33% chance to loot a chest
     
-    if randChest == 1{      //si il y a un coffre
+    if randChest == 1{      //if there is a chest
         oldDamage = character.getDamage()
         
-        randItem = Int.random(in: 0...itemSelector.count-1) //on lance en rand parmi les items que le perso peut porter
+        randItem = Int.random(in: 0...itemSelector.count-1)     //Randomly selects an item in the character item array
         item = itemSelector[randItem]
-        character.setDamage(itemSelector: item) //affectation des dégats de l'item aux dégats du perso
+        character.setDamage(itemSelector: item) //Assignment of the damage of the item to the damage of the perso
         newDamage = character.getDamage()
         character.setItemName(itemName: item)   //nom du nouvel l'item
         

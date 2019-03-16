@@ -8,6 +8,7 @@
 
 import Foundation
 
+//The team has a name and 3 characters
 class Team{
     var playerName: String = "Unnamed"
     var arrayCharac: [Character] = []
@@ -75,6 +76,7 @@ class Team{
         self.playerName = name
     }
 
+    //Check if the name is available
     func checkNamePlayer(name: String) -> Bool{
         var vailable: Bool = true
         

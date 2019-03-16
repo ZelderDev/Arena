@@ -8,6 +8,7 @@
 
 import Foundation
 
+//Gives all the statistics of the game (damage, heal).
 class Statistics{
     var totalDamageDone = 0
     var totalDamageTaken = 0
@@ -22,7 +23,7 @@ class Statistics{
         self.totalHealingTaken = team1.getTeamHealingTaken() + team2.getTeamHealingTaken()
     }
     
-    //Le but de cette méthode est de donnée le pourcentage d'une statistique d'un perso en particulier et de la retourner sous forme de texte pour être intégré directement dans l'affichage
+    //The purpose of this method is to give the percentage of a statistic of a particular character and to return it as text to be directly integrated in the display
     func percentage(total: Int, characterStat: Int) -> String{
         var percent = 0.00
         
@@ -32,7 +33,7 @@ class Statistics{
         return String(format: "%.2f", percent)
     }
  
-    //Displays the stats of a team
+    //Show team stats
     func teamStatics(team: Team){
         var bloc1: String = ""
         var bloc2: String = ""
@@ -58,13 +59,13 @@ class Statistics{
         print(bloc1 + bloc2)
     }
     
-    
+    //Calculate total statistics
     func totalStatistics(){
         var line = ""
-        var totalDamageDone = team1.getTeamDamageDone() + team2.getTeamDamageDone()
-        var totalDamageTaken = team1.getTeamDamageTaken() + team2.getTeamDamageTaken()
-        var totalHealingDone = team1.getTeamHealingDone() + team2.getTeamHealingDone()
-        var totalHealingTaken = team1.getTeamHealingTaken() + team2.getTeamHealingTaken()
+        let totalDamageDone = team1.getTeamDamageDone() + team2.getTeamDamageDone()
+        let totalDamageTaken = team1.getTeamDamageTaken() + team2.getTeamDamageTaken()
+        let totalHealingDone = team1.getTeamHealingDone() + team2.getTeamHealingDone()
+        let totalHealingTaken = team1.getTeamHealingTaken() + team2.getTeamHealingTaken()
         
         line += cell(str: "Total", format: .medium)
             + cell(str: totalDamageDone, format: .medium)
@@ -75,11 +76,12 @@ class Statistics{
         print(line)
     }
     
-    func displayStatistics(){
-        print("Résumé des statistiques de la partie")
+    //Displays the statistics of the game
+    func displayStatistics(turn: Int){
+        print("\nRésumé des statistiques de la partie")
+        print("Nombre de tours: \(turn)")
         teamStatics(team: team1)
         teamStatics(team: team2)
         totalStatistics()
     }
-    
 }

@@ -13,13 +13,15 @@ class Character{
     var characterName: String = "Unnamed"
     var specializationName: String = "None"
     var healthPoints: Int = 0
-    var isAlive = true
+    var isAlive = true                  //Given the state of the character, dead or alive
     var damage: Int = 0
-    var rawHp = 1                       //Fixe les pv max du héro en cas d'over heal
+    var rawHp = 1                       //Allows you to set a maximum health point
     var rawDamage = 0
     var itemName = ""
-    var items: [String:Int] = [:]       //Item propre à chaque héro
+    var items: [String:Int] = [:]       //Items specific to each character
     var itemSelector: [String] = []     //
+    var dpsOrHealer = true              //true for dps & false for healer
+
     
     var healingTaken = 0
     var healingDone = 0
@@ -33,6 +35,12 @@ class Character{
     
     
 /* ========== GETTER & SETTER ========== */
+    
+    //GET - Lets you know if the character is a dps or a healer
+    func getDpsOrHealer() -> Bool{
+        return dpsOrHealer
+    }
+    
     //GET & SET healingTaken
     func getHealingTaken() -> Int{
         return healingTaken

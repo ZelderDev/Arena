@@ -29,22 +29,25 @@ class Battle{
         
         repeat{ //As long as the keyboard input is not correct or the selected character is dead then
             
-            while(checkInput == false){
-                input =  readLine()
-                
+            
+            repeat{
+                input = readLine()
                 if(input != "1" && input != "2" && input != "3" && input != "4"){
                     checkInput = false
                     print("Saisir UNIQUEMENT un héros entre 1 et 3.")
                 }else{
                     checkInput = true
                 }
-            }
+            }while(checkInput == false)
+            
             if let input = input{
                 picking = (input as NSString).integerValue
             }
+            
             if(picking > 0 && picking <= 3){
                 if(team.getCharacter(index: picking-1).isAlive == false){
-                    print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort !")
+                    print("\(team.getCharacter(index: picking-1).getCharacterName()) est mort(e)!\nSélectionnez un autre héro.")
+                    checkInput = false
                 }
             }else{
                 print("Choisissez un héros dans la liste entre 1 et 3:")
@@ -110,7 +113,7 @@ class Battle{
         while(team1.teamIsAlive() && team2.teamIsAlive()){
 
             indexTurn += 1 //
-            if(turn%2 == 0){
+            if(indexTurn%2 == 0){
                 turn += 1
             }
             
@@ -128,22 +131,22 @@ class Battle{
                 random(character: emitter)
                 
                 //Select an enemy
-                if emitter is DamageDealer{
+                if emitter.getDpsOrHealer() == true{
                     text = "\(ally.getPlayerName()), choisissez un champion à attaquer"
                     displayBattle(team:enemy, str: text)      //Show the enemy team
                     target = selectCharacter(team: enemy)     //Select a character to attack
                     attack(attacker: emitter, target: target) //action (ATTACK !!!)
                     nextPlayer()                              //End of this player's turn
                 }
+                
                 //Select an ally
-                if emitter is Healer{
+                if emitter.getDpsOrHealer() == false{
                     text = "\(ally.getPlayerName()), choisissez un champion à soigner"
                     displayBattle(team:ally, str: text)      //Show the ally team
                     target = selectCharacter(team: ally)     //Select a character to heal
                     heal(healer: emitter, target: target)    //action (HEAL)
                     nextPlayer()                             //End of this player's turn
                 }
-            
                 round = false   //next player's turn
                 
             case false:         //Player2's turn
@@ -156,32 +159,33 @@ class Battle{
                 
                 random(character: emitter)
                 
-                if emitter is DamageDealer{
+                //Select an enemy
+                if emitter.getDpsOrHealer() == true{
                     text = "\(ally.getPlayerName()), choisissez un champion à attaquer"
-                    displayBattle(team:enemy, str: text)
-                    target = selectCharacter(team: enemy)
-                    attack(attacker: emitter, target: target)
-                    nextPlayer()
+                    displayBattle(team:enemy, str: text)      //Show the enemy team
+                    target = selectCharacter(team: enemy)     //Select a character to attack
+                    attack(attacker: emitter, target: target) //action (ATTACK !!!)
+                    nextPlayer()                              //End of this player's turn
                 }
                 
-                if emitter is Healer{
+                //Select an ally
+                if emitter.getDpsOrHealer() == false{
                     text = "\(ally.getPlayerName()), choisissez un champion à soigner"
-                    displayBattle(team:ally, str: text)
-                    target = selectCharacter(team: ally)
-                    heal(healer: emitter, target: target)
-                    nextPlayer()
+                    displayBattle(team:ally, str: text)      //Show the ally team
+                    target = selectCharacter(team: ally)     //Select a character to heal
+                    heal(healer: emitter, target: target)    //action (HEAL)
+                    nextPlayer()                             //End of this player's turn
                 }
                 round = true
             }//end switch
             
-        }//end - while one team is alive
+        }//end - While one team is alive
 
         //Who to win, who lost the game
         if(team1.teamIsAlive() == false){
-            print("\(team2.getPlayerName()) à gagné")
-            //afficher
+            print("\nLE VAINQUEUR EST \(team2.getPlayerName())!")
         }else if(team2.teamIsAlive() == false){
-            print("\(team1.getPlayerName()) à gagné")
+            print("\nLE VAINQUEUR EST \(team1.getPlayerName())!")
         }
         return turn
     }//end round

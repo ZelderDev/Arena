@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Dwarf: DamageDealer{
+class Dwarf: Character{
     
     
     
@@ -23,6 +23,7 @@ class Dwarf: DamageDealer{
         self.items = ["arbalète":25, "fusil":30, "couteau":18, "hachette": 20]
         self.damage = items[itemSelector[0]]!   
         self.itemName = itemSelector[0]
+        self.dpsOrHealer = true                 //dps
     }
     
     enum DwarfItems: String{

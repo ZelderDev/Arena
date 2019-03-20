@@ -23,36 +23,49 @@ class Team{
         self.playerName = name
     }
     
-    //STATISTICS healing taken by the team
+    //STATISTICS  Healing taken by the team
     func getTeamHealingTaken() -> Int{
+        return teamHealingTaken
+    }
+    func setTeamHealingTaken(){
+        self.teamHealingTaken = 0
         for character in arrayCharac {
             self.teamHealingTaken += character.getHealingTaken()
         }
-        return teamHealingTaken
     }
     
-    //STATISTICS healing done by the team
+    //STATISTICS - Get & Set - healing done by the team
     func getTeamHealingDone() -> Int{
+        return teamHealingDone
+    }
+    func setTeamHealingDone(){
+        self.teamHealingDone = 0
         for character in arrayCharac {
             self.teamHealingDone += character.getHealingDone()
+            //print(self.teamHealingDone)
         }
-        return teamHealingDone
     }
     
     //STATISTICS damage taken by the team
     func getTeamDamageTaken() -> Int {
+        return teamDamageTaken
+    }
+    func setTeamDamageTaken(){
+        self.teamDamageTaken = 0
         for character in arrayCharac {
             self.teamDamageTaken += character.getDamageTaken()
         }
-        return teamDamageTaken
     }
     
     //STATISTICS Damage done by the team
     func getTeamDamageDone() -> Int {
+        return teamDamageDone
+    }
+    func setTeamDamageDone(){
+        self.teamDamageDone = 0
         for character in arrayCharac {
             self.teamDamageDone += character.getDamageDone()
         }
-        return teamDamageDone
     }
     
     /* PLAYER NAME */
@@ -80,16 +93,16 @@ class Team{
     func checkNamePlayer(name: String) -> Bool{
         var vailable: Bool = true
         
-        for index in Team.checkNamePlayer{              //check tout le tableau à la recherche de doublon
-            if(index == name){                          //si doublon alors redemande un autre nom
+        for index in Team.checkNamePlayer{              //check array for duplicate
+            if(index == name){                          //give a other name
                 print("Le nom \(name) est déjà pris")   
                 vailable = false
                 return vailable
             }else{
-                vailable = true                         //le nom est disponible
+                vailable = true                         //this name is available
             }
         }
-        Team.checkNamePlayer.append(name)       //ajout le nouveau à la bdd de noms
+        Team.checkNamePlayer.append(name)       //add the name at the database
         return vailable
     }
     
@@ -98,17 +111,17 @@ class Team{
     }
     
     /* Add a new hero to the team */
-    func addCharacter(character: Character){        //nouveau champion dans l'équipe
-        if arrayCharac.count < 3 {                  //si l'équipe n'est pas pleine
-            self.arrayCharac.append(character)      //on ajoute le héro à l'équipe
+    func addCharacter(character: Character){
+        if arrayCharac.count < 3 {                  //if the team is not full
+            self.arrayCharac.append(character)      //add this character to the team
         }else{
-            print("Impossible d'ajouter un autre héro") //sinon erreur
+            print("Impossible d'ajouter un autre héro")
         }
     }
     
     
     func getCharacter(index: Int) -> Character{
-        return arrayCharac[index]   //return le champion voulu
+        return arrayCharac[index]   //return the character at this index
     }
     
     func getCharacterName(index: Int) -> String{

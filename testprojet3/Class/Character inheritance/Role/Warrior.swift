@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Warrior: DamageDealer{
+class Warrior: Character{
     
 
     override init(name: String){
@@ -21,6 +21,7 @@ class Warrior: DamageDealer{
         self.items = ["épée":10, "hache":15, "masse": 11, "dague":9]
         self.damage = items[itemSelector[0]]!   //épée
         self.itemName = itemSelector[0]         //épée
+        self.dpsOrHealer = true                 //dps
     }
     
     enum WarriorItems: String{

@@ -8,8 +8,7 @@
 
 import Foundation
 
-class Priest: Healer{
-    
+class Priest: Character{
     
     
     override init(name: String){
@@ -22,7 +21,8 @@ class Priest: Healer{
         self.itemSelector = [PriestItems.stick.rawValue, PriestItems.book.rawValue, PriestItems.wand.rawValue]
         self.items = ["bâton":15, "livre":12, "baguette":10]
         self.damage = items[itemSelector[0]]!   
-        self.itemName = itemSelector[0] 
+        self.itemName = itemSelector[0]
+        self.dpsOrHealer = false        //healer
     }
     
     enum PriestItems: String{

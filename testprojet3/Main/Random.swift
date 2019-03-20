@@ -8,6 +8,15 @@
 
 import Foundation
 
+//Back to the game
+func backToTheGame(){
+    print("RETOUR À LA PARTIE, veuillez patienter", terminator:" ")
+    for _ in 1...3{
+        print(".", terminator:"")
+        sleep(1)
+    }
+    print("\n")
+}
 //Manage the random appearance of a chest during the combat phase
 func random(character: Character){
     var randChest: Int
@@ -31,9 +40,13 @@ func random(character: Character){
         print("\n\n\n\n\n\n\n\n\n\n\n\n\n")
         print("UN COFFRE TOMBE DU CIEL ET LAISSE ECHAPPER QUELQUE CHOSE")
         sleep(1)
+        print("        Nom de l'item : \(item.uppercased())")
         print("\(character.getCharacterName()) s'équipe du nouvel item: \(item),")
-        print("son attaque passe de \(oldDamage) à \(newDamage)")
-        sleep(3)
+        print("L'attaque de \(character.getCharacterName()) passe de \(oldDamage) à \(newDamage)")
+        sleep(1)
+        backToTheGame()
     }
+    
+
 }
 

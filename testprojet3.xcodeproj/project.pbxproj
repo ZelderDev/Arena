@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5F0A66232216F8BE0059F5F2 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A66222216F8BE0059F5F2 /* Character.swift */; };
-		5F0A6628221702160059F5F2 /* DamageDealer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6627221702160059F5F2 /* DamageDealer.swift */; };
-		5F0A662A221702240059F5F2 /* Healer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6629221702240059F5F2 /* Healer.swift */; };
 		5F0A662E221704790059F5F2 /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A662D221704790059F5F2 /* Warrior.swift */; };
 		5F0A6631221706980059F5F2 /* Colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6630221706980059F5F2 /* Colossus.swift */; };
 		5F0A6633221711AF0059F5F2 /* Priest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F0A6632221711AF0059F5F2 /* Priest.swift */; };
@@ -38,8 +36,6 @@
 
 /* Begin PBXFileReference section */
 		5F0A66222216F8BE0059F5F2 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
-		5F0A6627221702160059F5F2 /* DamageDealer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageDealer.swift; sourceTree = "<group>"; };
-		5F0A6629221702240059F5F2 /* Healer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Healer.swift; sourceTree = "<group>"; };
 		5F0A662D221704790059F5F2 /* Warrior.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		5F0A6630221706980059F5F2 /* Colossus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colossus.swift; sourceTree = "<group>"; };
 		5F0A6632221711AF0059F5F2 /* Priest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Priest.swift; sourceTree = "<group>"; };
@@ -69,8 +65,6 @@
 		5F0A66262217017E0059F5F2 /* Character inheritance */ = {
 			isa = PBXGroup;
 			children = (
-				5F0A6629221702240059F5F2 /* Healer.swift */,
-				5F0A6627221702160059F5F2 /* DamageDealer.swift */,
 				5F0A662F221705BD0059F5F2 /* Role */,
 			);
 			path = "Character inheritance";
@@ -194,7 +188,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5F0A662E221704790059F5F2 /* Warrior.swift in Sources */,
-				5F0A662A221702240059F5F2 /* Healer.swift in Sources */,
 				5F7F0CB02227F7EB001B7ACE /* Random.swift in Sources */,
 				5F0A6635221717470059F5F2 /* Dwarf.swift in Sources */,
 				5F5B2179221327DC008CD529 /* main.swift in Sources */,
@@ -204,7 +197,6 @@
 				5F0A6631221706980059F5F2 /* Colossus.swift in Sources */,
 				5F0A663C221981290059F5F2 /* Team.swift in Sources */,
 				5F7F0CB2222D1166001B7ACE /* Ninja.swift in Sources */,
-				5F0A6628221702160059F5F2 /* DamageDealer.swift in Sources */,
 				5F0A66232216F8BE0059F5F2 /* Character.swift in Sources */,
 				5F7F0CB4222D826E001B7ACE /* Statistics.swift in Sources */,
 				5F150C29221FD9B60052AF04 /* Battle.swift in Sources */,

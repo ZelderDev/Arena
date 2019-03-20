@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ninja: DamageDealer{
+class Ninja: Character{
     
     
     override init(name: String){
@@ -21,6 +21,7 @@ class Ninja: DamageDealer{
         self.items = ["poingnard":10, "shuriken":12, "ninchaku": 15]
         self.damage = items[itemSelector[0]]!
         self.itemName = itemSelector[0]
+        self.dpsOrHealer = true                 //dps
     }
     
     enum NinjaItems: String{

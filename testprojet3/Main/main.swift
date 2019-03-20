@@ -9,11 +9,14 @@
 import Foundation
 
 var turn = 0
-var team1 = Team(name: "Joueur 1")
-var team2 = Team(name: "Joueur 2")
+var team1 = Team(name: "Olivier")
+var team2 = Team(name: "Antoine")
 var show = Picks(team1: team1, team2: team2)
 var battle = Battle(team1: team1, team2: team2)
 var stats = Statistics(team1: team1, team2: team2)
+
+
+
 
 //team1.addCharacter(character: Dwarf(name: "Vrarox"))
 //team1.addCharacter(character: Priest(name: "Broudy"))
@@ -48,7 +51,7 @@ var stats = Statistics(team1: team1, team2: team2)
 ////Warrior
 //team2.getCharacter(index: 2).setDamageDone(damage: 50)
 //team2.getCharacter(index: 2).setDamageTaken(damage: 500)
-//team2.getCharacter(index: 2).setHealingTaken(heal: 50)
+//team2.getCharacter(index: 2).setHealingTaken(heal: 70)
 //
 //
 ////Death of the team2
@@ -61,5 +64,6 @@ var stats = Statistics(team1: team1, team2: team2)
 show.askPlayerName()
 show.pickPhase(team1: team1, team2: team2)
 turn = battle.round()
+
 //turn = 20
 stats.displayStatistics(turn: turn)

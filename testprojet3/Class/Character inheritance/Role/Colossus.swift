@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Colossus: DamageDealer{
+class Colossus: Character{
     
     
     override init(name: String){
@@ -21,6 +21,7 @@ class Colossus: DamageDealer{
         self.items = ["masse": 5, "bouclier":9]
         self.damage = items[itemSelector[0]]!  
         self.itemName = itemSelector[0]
+        self.dpsOrHealer = true                 //dps
     }
     
     enum ColossusItems: String{

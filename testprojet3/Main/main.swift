@@ -9,8 +9,8 @@
 import Foundation
 
 var turn = 0
-var team1 = Team(name: "Olivier")
-var team2 = Team(name: "Antoine")
+var team1 = Team(name: "Joueur1")
+var team2 = Team(name: "Joueur2")
 var show = Picks(team1: team1, team2: team2)
 var battle = Battle(team1: team1, team2: team2)
 var stats = Statistics(team1: team1, team2: team2)
@@ -59,11 +59,10 @@ var stats = Statistics(team1: team1, team2: team2)
 //team2.getCharacter(index: 1).setHealthPoints(hp: 0)
 //team2.getCharacter(index: 2).setHealthPoints(hp: 0)
 
-
+//turn = 20
 
 show.askPlayerName()
 show.pickPhase(team1: team1, team2: team2)
 turn = battle.round()
 
-//turn = 20
 stats.displayStatistics(turn: turn)

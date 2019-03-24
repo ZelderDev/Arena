@@ -16,7 +16,6 @@ class Statistics{
     var totalHealingTaken = 0
     var allTeams: [Team] = []
     
-    
     init(team1: Team, team2: Team){
         self.allTeams = [team1, team2]
     }
